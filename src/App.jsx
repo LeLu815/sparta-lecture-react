@@ -10,6 +10,13 @@ function App() {
   const [todoList, setTodoList] = useState([]);
 
   const addFunc = () => {
+    if (newTitle === "") {
+      alert("제목을 입력해주세요!");
+      return;
+    } else if (newDescription === "") {
+      alert("내용을 입력해주세요!");
+      return;
+    }
     setTodoList((list) => {
       return list.concat([
         {
@@ -46,17 +53,30 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <div>
-        <Input title="제목" value={newTitle} onChange={setNewTitle} />
+      <header className={styles.header}>
+        <span>My Todo List</span>
+        <span>React</span>
+      </header>
+      <div className={styles["input-container"]}>
         <Input
+          className={styles["input-component"]}
+          title="제목"
+          value={newTitle}
+          onChange={setNewTitle}
+        />
+        <Input
+          className={styles["input-component"]}
           title="내용"
           value={newDescription}
           onChange={setNewDescription}
+          maxLength="30"
         />
-        <button onClick={addFunc}>추가하기</button>
+        <button className={styles["add-btn"]} onClick={addFunc}>
+          추가하기
+        </button>
       </div>
-      <div>Working...🔥</div>
-      <ul>
+      <div className={styles["head-section"]}>Working...🔥</div>
+      <ul className={styles["card-container"]}>
         {todoList
           .filter((item) => !item.isDone)
           .map((item) => (
@@ -68,21 +88,24 @@ function App() {
               isDone={item.isDone}
               deleteFunc={deleteFunc}
               checkFunc={checkFunc}
+              className={styles["card"]}
             />
           ))}
       </ul>
-      <div>Done...!🎉</div>
-      <ul>
+      <div className={styles["head-section"]}>Done...!🎉</div>
+      <ul className={styles["card-container"]}>
         {todoList
           .filter((item) => item.isDone)
-          .map((itme) => (
+          .map((item) => (
             <Card
-              key={itme.id}
-              title={itme.title}
-              description={itme.description}
-              id={itme.id}
+              key={item.id}
+              title={item.title}
+              description={item.description}
+              id={item.id}
+              isDone={item.isDone}
               deleteFunc={deleteFunc}
               checkFunc={checkFunc}
+              className={styles["card"]}
             />
           ))}
       </ul>
