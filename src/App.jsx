@@ -22,10 +22,8 @@ function App() {
         {
           title: newTitle,
           description: newDescription,
-          id: `${Math.random()}`,
+          id: Math.random(),
           isDone: false,
-          deleteFunc,
-          checkFunc,
         },
       ]);
     });
@@ -41,8 +39,7 @@ function App() {
     setTodoList((itemList) => {
       return itemList.map((item) => {
         if (item.id === id) {
-          const newIsDone = Boolean(!item.isDone);
-          console.log(newIsDone);
+          const newIsDone = !item.isDone;
           return { ...item, isDone: newIsDone };
         } else {
           return item;
