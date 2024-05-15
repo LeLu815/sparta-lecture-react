@@ -42,7 +42,6 @@ function App() {
       return itemList.map((item) => {
         if (item.id === id) {
           const newIsDone = Boolean(!item.isDone);
-          console.log(newIsDone);
           return { ...item, isDone: newIsDone };
         } else {
           return item;
