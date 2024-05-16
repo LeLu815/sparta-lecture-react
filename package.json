@@ -3,11 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lelu815.github.io/sparta-lecture-react/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "gh-pages -b master -d build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
